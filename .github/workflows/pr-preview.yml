@@ -1,0 +1,32 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        if: github.event.action != 'closed'
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build
+        if: github.event.action != 'closed'
+        run: bundle exec jekyll build
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./_site
+          preview-branch: gh-pages

@@ -8,18 +8,23 @@
 ## 運用ルール
 - 各自の個人フォルダ（`河﨑/` `堀井/` `中野/`）の中は本人が自由に構成してよい。
 - `議事録/` は共有。話し合いの内容やその場で決まったことを残す場所。
-- ブランチは切らず `main` に直接コミットでよい（少人数の作業場所のため）。
+- **投稿（リサーチ内容）はブランチを切らず `main` に直接コミットでよい**（CMS経由が基本）。
+- **サイトの構造的な変更（レイアウト・CSS・`_config.yml`・ワークフローなど）は必ずブランチを切り、
+  Pull Requestにする**。自動でプレビュー環境ができるので、mainに影響を与えずに確認できる。
+  詳細は下記「ブランチ・PRプレビューの運用」を参照。
 - 中野築月さんは通常のClaude（ターミナル操作なし）で参加しているため、基本は `admin/` の
   Sveltia CMS（ブラウザのフォーム編集）を使う。CMSが使えないときはGitHubのWeb UIから
-  直接編集してもよい。
+  直接編集してもよい。構造的な変更をしたい場合はGitHub Connector経由でClaudeにブランチ・
+  PR作成を頼む（下記参照）。
 - アウトプットの形式やサイトの見せ方について前提を勝手に置かない。決まっていないことは
   「未定」として扱い、必要なら議事録や会話の中で確認する。
 
 ## Webサイトの構成（2026-08-08決定）
 公開サイトはGitHub Pages + Jekyllで自動ビルドする。追加のクラウドサービスやビルドパイプラインは持たない方針。
 
-- **ホスティング**: GitHub Pages（`main`ブランチのルートから自動ビルド。pushすれば数分後に反映）
-- **サイト生成**: Jekyll（`jekyll-theme-minimal`。GitHub Pages標準搭載でGemfile等の追加設定は不要）
+- **ホスティング**: GitHub Pages。`gh-pages`ブランチから配信（`main`はソースのみ、直接は公開されない）
+- **サイト生成**: Jekyll（独自レイアウト`_layouts/default.html`。GitHub Actionsでビルドして
+  `gh-pages`ブランチにデプロイ。`Gemfile`でjekyllをバージョン固定）
 - **編集画面**: `admin/` に置いたSveltia CMS（無料・OSS）。ブラウザのフォームでタイトル・本文・
   画像を入力でき、Markdownやフォルダ構成を意識しなくてよい。
 - **ログイン方式**: Personal Access Token（PAT）。各自が`kosogun`リポジトリ限定・Contents
@@ -31,9 +36,28 @@
   ないファイル（プレースホルダーのREADME.mdなど）は一覧に出ない。
 - サイトURL: `https://da-unch.github.io/kosogun/`（GitHub Pagesの有効化はリポジトリオーナー
   権限が必要な操作のため、河﨑が Settings → Pages から行う）。
-- 今回あえて入れていないもの: カスタムドメイン、OAuthワンクリックログイン、Astro等のビルド
-  パイプライン。将来デザインを作り込む段階になったら見直す（`図書館アーカイブ`プロジェクトの
-  Astro+Cloudflare Pages構成が参考になる）。
+- 今回あえて入れていないもの: カスタムドメイン、OAuthワンクリックログイン、Astro等の
+  モダンなビルドツール。将来デザインを作り込む段階になったら見直す（`図書館アーカイブ`
+  プロジェクトのAstro+Cloudflare Pages構成が参考になる）。
+
+## ブランチ・PRプレビューの運用（2026-08-08追加）
+サイトのレイアウトやCSSなど構造的な変更は、3人とも次の流れで行う。
+
+1. 変更用のブランチを切る（`git checkout -b <名前>/<内容>`、または中野さんはGitHub Connector
+   経由でClaudeに「ブランチを切って」と頼む）
+2. 変更してそのブランチにpush
+3. `main`へのPull Requestを作成（`gh pr create`、GitHub Web UI、またはConnector経由でClaudeに依頼）
+4. `.github/workflows/pr-preview.yml`が自動でビルド・デプロイし、PRのコメント欄に
+   `https://da-unch.github.io/kosogun/pr-preview/pr-<番号>/` のプレビューURLが投稿される
+5. そのURLをブラウザで開けば誰でも（スマホ含む）確認できる。ログインや特別なソフトは不要
+6. 問題なければPRをMerge。`.github/workflows/deploy.yml`が本番の`gh-pages`を更新し、
+   同時にプレビューは自動で片付く
+
+- 中野さんはPro以上のClaudeプランでGitHub Connectorが使える前提。スマホのClaudeアプリから
+  「サイトの見出しの色を変えて」のように自然言語で頼めば、Claudeがブランチを切って
+  変更しPRを作るところまでできる。**mainへの直接コミットは構造的な変更では避け、必ずPR経由にする**
+  よう、本人のClaude Projectのカスタム指示にも明記している。
+- 投稿コンテンツ（各自のフォルダへのCMS投稿）はこの対象外。今まで通りmain直接でよい。
 
 ## AI掲示板
 `AI掲示板.md` は、このリポジトリで作業する複数のAI（河﨑担当のClaude Code、

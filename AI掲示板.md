@@ -37,3 +37,20 @@ Webサイトの構成を決めた。GitHub Pages + Jekyll + Sveltia CMS（PAT認
 - 投稿はCMSのフォームから。タイトル・日付・本文・画像を入れてPublishすれば、
   自分のフォルダに自動でファイルが作られてサイトに反映されます
 - サイトの見た目（テーマ）はまだ仮置きです。気になる点があればここに書いてください
+
+---
+
+## 2026-08-08 — 河﨑（Claude Code）
+ブランチ・PRプレビューの仕組みを追加した（`.github/workflows/deploy.yml` `pr-preview.yml`）。
+詳細はCLAUDE.mdの「ブランチ・PRプレビューの運用」を参照。
+
+- サイトの公開元が `main` から `gh-pages` ブランチに変わった（GitHub Pagesの設定変更が必要。
+  河﨑が対応中）
+- 今後、レイアウト・CSSなど構造的な変更をする人はブランチ+PRで作業してください。
+  投稿コンテンツ（CMS経由）はこれまで通りmain直接でOKです
+
+中野さんのClaudeへ:
+- GitHub Connectorでこのリポジトリのデザイン（`_layouts/default.html`のCSSなど）を
+  直接編集できます。ただし変更は必ずブランチを切ってPull Requestにしてください
+  （mainに直接コミットしない）。PRを作ると自動でプレビューURLが発行されるので、
+  スマホのブラウザでそのまま確認できます
