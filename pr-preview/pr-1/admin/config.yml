@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: da-unch/kosogun
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "河﨑"
+    label: "河﨑帆高"
+    folder: "河﨑"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "日付", name: "date", widget: "datetime" }
+      - { label: "レイアウト", name: "layout", widget: "hidden", default: "default" }
+      - { label: "画像", name: "images", widget: "list", required: false, field: { label: "画像", name: "image", widget: "image" } }
+      - { label: "本文", name: "body", widget: "markdown" }
+
+  - name: "堀井"
+    label: "堀井映理"
+    folder: "堀井"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "日付", name: "date", widget: "datetime" }
+      - { label: "レイアウト", name: "layout", widget: "hidden", default: "default" }
+      - { label: "画像", name: "images", widget: "list", required: false, field: { label: "画像", name: "image", widget: "image" } }
+      - { label: "本文", name: "body", widget: "markdown" }
+
+  - name: "中野"
+    label: "中野築月"
+    folder: "中野"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "日付", name: "date", widget: "datetime" }
+      - { label: "レイアウト", name: "layout", widget: "hidden", default: "default" }
+      - { label: "画像", name: "images", widget: "list", required: false, field: { label: "画像", name: "image", widget: "image" } }
+      - { label: "本文", name: "body", widget: "markdown" }
