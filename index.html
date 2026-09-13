@@ -3,15 +3,8 @@ layout: default
 title: Frame Studies
 ---
 {%- include feed.html -%}
-<section class="intro">
-  <div>
-    <p class="eyebrow">Frame Studies</p>
-    <p>A shared scrapbook on frames — photos, notes and links by {{ site.members | map: "en" | join: ", " }}.</p>
-  </div>
-  <span class="count">{{ posts.size }} posts</span>
-</section>
 {%- if feed.size > 0 %}
-<div class="grid" data-masonry>
+<div class="grid grid--home" data-masonry>
   {%- for item in feed %}{% include card.html p=item %}{% endfor %}
 </div>
 {%- else %}

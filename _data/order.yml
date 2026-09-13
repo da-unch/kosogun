@@ -1,34 +1,34 @@
 posts:
-- type: 堀井
+- type: H
   post: 2026-09-13-r-h05
   title: R-H05
-- type: 堀井
+- type: H
   post: 2026-09-13-r-h04
   title: R-H04
-- type: 堀井
+- type: H
   post: 2026-09-13-r-h03
   title: R-H03
-- type: 堀井
+- type: H
   post: 2026-09-13-r-h02
   title: R-H02
-- type: 中野
+- type: N
   post: 2026-09-13-r-n01
   title: R-N01
-- type: 堀井
+- type: H
   post: 2026-09-13-r-h01
   title: R-H01
-- type: 河﨑
+- type: K
   post: 2026-09-13-r-k04
   title: R-K04
-- type: 河﨑
+- type: K
   post: 2026-09-13-p-k01
   title: P-K01
-- type: 河﨑
+- type: K
   post: 2026-09-13-r-k02
   title: R-K02
-- type: 河﨑
+- type: K
   post: README
   title: R-K03
-- type: 河﨑
+- type: K
   post: 2026-08-08-テスト1
   title: R-K01
