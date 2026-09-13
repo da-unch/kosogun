@@ -68,15 +68,9 @@ button { font: inherit; color: inherit; }
   box-shadow: var(--shadow);
 }
 .page-post .topbar { padding-left: 8px; }
-.brand { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 400; letter-spacing: .24em; text-transform: uppercase; white-space: nowrap; }
-.brand__mark {
-  width: 14px;
-  height: 14px;
-  border: 1px solid currentColor;
-  outline: 1px solid currentColor;
-  outline-offset: 2px;
-  margin: 0 3px;
-}
+.brand { display: flex; flex-direction: column; justify-content: center; line-height: 1.02; font-weight: 300; white-space: nowrap; }
+.brand__ja { font-size: 12px; letter-spacing: .04em; }
+.brand__en { font-family: "Helvetica Neue", "Inter", sans-serif; font-size: 15px; letter-spacing: 0; }
 .topbar__spacer { flex: 1; }
 .pill, .icon-btn {
   display: inline-flex;
@@ -151,7 +145,7 @@ button { font: inherit; color: inherit; }
   pointer-events: none;
 }
 .card:hover .card__media::after { opacity: 1; }
-.card--text .card__media { padding: 52px 20px 24px; background: var(--surface); }
+.card--text .card__media { padding: 22px 20px 24px; background: var(--surface); }
 .card--text .card__media::after { display: none; }
 .card__excerpt {
   margin: 0;
@@ -243,15 +237,11 @@ button { font: inherit; color: inherit; }
 @media (max-width: 860px) {
   .pin { grid-template-columns: 1fr; border-radius: 28px; }
 }
-.pin__media { position: relative; min-height: 320px; background: var(--surface); }
-.carousel { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.pin__media { position: relative; align-self: start; background: var(--surface); }
+.carousel { display: flex; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .carousel::-webkit-scrollbar { display: none; }
-.carousel figure { flex: 0 0 100%; display: grid; place-items: center; margin: 0; min-height: min(78vh, 760px); scroll-snap-align: center; }
-.carousel img { width: 100%; max-height: min(78vh, 760px); object-fit: contain; }
-@media (max-width: 860px) {
-  .carousel figure { min-height: 0; }
-  .carousel img { max-height: 70vh; }
-}
+.carousel figure { flex: 0 0 100%; margin: 0; scroll-snap-align: start; }
+.carousel img { width: 100%; height: auto; }
 .car-btn {
   position: absolute;
   top: 50%;
@@ -293,7 +283,7 @@ button { font: inherit; color: inherit; }
 
 .pin__body { display: flex; flex-direction: column; gap: 22px; padding: 36px 36px 40px; }
 @media (max-width: 560px) { .pin__body { padding: 26px 22px 30px; } }
-.pin__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pin__top { display: flex; align-items: center; justify-content: flex-start; gap: 12px; }
 .num { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .pin h1 { margin: 0; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.2; letter-spacing: -.01em; font-weight: 200; }
 .byline { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 400; }
@@ -324,7 +314,7 @@ button { font: inherit; color: inherit; }
 .section-title { width: var(--wide); margin: 80px auto 20px; font-size: 12px; font-weight: 400; letter-spacing: .24em; text-transform: uppercase; text-align: center; color: var(--muted); }
 
 .empty { width: var(--wide); margin: 40px auto; text-align: center; color: var(--muted); }
-.footer { padding: 24px 0 56px; font-size: 11px; letter-spacing: .24em; text-align: center; color: var(--faint); }
+.footer { padding: 24px 0 56px; font-size: 12px; letter-spacing: .04em; text-align: center; color: var(--faint); }
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(24px) scale(.985); }
