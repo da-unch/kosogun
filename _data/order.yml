@@ -23,9 +23,6 @@ posts:
 - type: K
   post: 2026-09-13-p-k01
   title: P-K01
-- type: H
-  post: README
-  title: テスト
 - type: K
   post: 2026-09-13-r-k02
   title: R-K02
@@ -35,6 +32,3 @@ posts:
 - type: K
   post: 2026-08-08-テスト1
   title: R-K01
-- type: N
-  post: README
-  title: テスト
