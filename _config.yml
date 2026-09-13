@@ -1,3 +1,16 @@
 title: 額縁研究 kosogun
 description: 河﨑帆高・堀井映理・中野築月による額縁の共同リサーチサイト
 markdown: kramdown
+
+members:
+  - { key: "河﨑", name: "河﨑帆高" }
+  - { key: "堀井", name: "堀井映理" }
+  - { key: "中野", name: "中野築月" }
+
+defaults:
+  - scope: { path: "河﨑" }
+    values: { layout: default }
+  - scope: { path: "堀井" }
+    values: { layout: default }
+  - scope: { path: "中野" }
+    values: { layout: default }

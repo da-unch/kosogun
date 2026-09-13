@@ -1,0 +1,7 @@
+{%- assign posts = "" | split: "" -%}
+{%- for m in site.members -%}
+  {%- assign dir = m.key | append: "/" -%}
+  {%- assign member_posts = site.pages | where_exp: "p", "p.path contains dir" | where_exp: "p", "p.title" -%}
+  {%- assign posts = posts | concat: member_posts -%}
+{%- endfor -%}
+{%- assign posts = posts | sort: "date", "last" -%}
