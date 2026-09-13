@@ -8,9 +8,9 @@ media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
-  - name: "河﨑"
-    label: "河﨑帆高"
-    folder: "河﨑"
+  - name: "K"
+    label: "K"
+    folder: "K"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -21,9 +21,9 @@ collections:
       - { label: "リンク", name: "links", widget: "list", required: false, field: { label: "URL", name: "url", widget: "string" } }
       - { label: "本文", name: "body", widget: "markdown", required: false }
 
-  - name: "堀井"
-    label: "堀井映理"
-    folder: "堀井"
+  - name: "H"
+    label: "H"
+    folder: "H"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -34,9 +34,9 @@ collections:
       - { label: "リンク", name: "links", widget: "list", required: false, field: { label: "URL", name: "url", widget: "string" } }
       - { label: "本文", name: "body", widget: "markdown", required: false }
 
-  - name: "中野"
-    label: "中野築月"
-    folder: "中野"
+  - name: "N"
+    label: "N"
+    folder: "N"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -65,22 +65,22 @@ collections:
             collapsed: true
             summary: "{{fields.title}}"
             types:
-              - label: "河﨑帆高"
-                name: "河﨑"
+              - label: "K"
+                name: "K"
                 widget: "object"
                 summary: "{{fields.title}}"
                 fields:
                   - { label: "タイトル", name: "title", widget: "string", readonly: true, required: false }
                   - { label: "ファイル名", name: "post", widget: "string", readonly: true }
-              - label: "堀井映理"
-                name: "堀井"
+              - label: "H"
+                name: "H"
                 widget: "object"
                 summary: "{{fields.title}}"
                 fields:
                   - { label: "タイトル", name: "title", widget: "string", readonly: true, required: false }
                   - { label: "ファイル名", name: "post", widget: "string", readonly: true }
-              - label: "中野築月"
-                name: "中野"
+              - label: "N"
+                name: "N"
                 widget: "object"
                 summary: "{{fields.title}}"
                 fields:
