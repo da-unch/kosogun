@@ -1,15 +1,22 @@
 posts:
-  - type: 河﨑
-    post: 2026-09-13-r-k04
-  - type: 河﨑
-    post: 2026-09-13-p-k01
-  - type: 堀井
-    post: README
-  - type: 河﨑
-    post: 2026-09-13-r-k02
-  - type: 河﨑
-    post: README
-  - type: 河﨑
-    post: 2026-08-08-テスト1
-  - type: 中野
-    post: README
+- type: 河﨑
+  post: 2026-09-13-r-k04
+  title: R-K04
+- type: 河﨑
+  post: 2026-09-13-p-k01
+  title: P-K01
+- type: 堀井
+  post: README
+  title: テスト
+- type: 河﨑
+  post: 2026-09-13-r-k02
+  title: R-K02
+- type: 河﨑
+  post: README
+  title: R-K03
+- type: 河﨑
+  post: 2026-08-08-テスト1
+  title: R-K01
+- type: 中野
+  post: README
+  title: テスト
