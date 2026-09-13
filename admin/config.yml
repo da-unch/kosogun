@@ -58,21 +58,31 @@ collections:
             name: "posts"
             widget: "list"
             required: false
-            hint: "上から順にタイルに並びます。ドラッグで並べ替えて保存。新しく投稿したものは数十秒後に自動で先頭に追加されます（開いたままだと保存時に古いと言われるので、そのときは再読み込みしてから並べ替えてください）。"
-            summary: "{{fields.post}}"
+            hint: "上から順にタイルに並びます。つまみをドラッグして並べ替え、Publishで保存。投稿の追加・削除は自動で反映されます（開いたままだと保存時に古いと言われるので、そのときは再読み込みしてから並べ替えてください）。"
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            collapsed: true
+            summary: "{{fields.title}}"
             types:
               - label: "河﨑帆高"
                 name: "河﨑"
                 widget: "object"
+                summary: "{{fields.title}}"
                 fields:
-                  - { label: "投稿", name: "post", widget: "relation", collection: "河﨑", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"] }
+                  - { label: "タイトル", name: "title", widget: "string", readonly: true, required: false }
+                  - { label: "ファイル名", name: "post", widget: "string", readonly: true }
               - label: "堀井映理"
                 name: "堀井"
                 widget: "object"
+                summary: "{{fields.title}}"
                 fields:
-                  - { label: "投稿", name: "post", widget: "relation", collection: "堀井", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"] }
+                  - { label: "タイトル", name: "title", widget: "string", readonly: true, required: false }
+                  - { label: "ファイル名", name: "post", widget: "string", readonly: true }
               - label: "中野築月"
                 name: "中野"
                 widget: "object"
+                summary: "{{fields.title}}"
                 fields:
-                  - { label: "投稿", name: "post", widget: "relation", collection: "中野", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"] }
+                  - { label: "タイトル", name: "title", widget: "string", readonly: true, required: false }
+                  - { label: "ファイル名", name: "post", widget: "string", readonly: true }

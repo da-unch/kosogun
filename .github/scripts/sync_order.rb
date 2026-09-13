@@ -21,18 +21,22 @@ posts = members.flat_map do |dir|
     meta = front && YAML.safe_load(front, permitted_classes: [Date, Time])
     next unless meta.is_a?(Hash) && meta['title']
 
-    { 'type' => dir, 'post' => File.basename(file, '.md'), 'date' => sortable_date(meta['date']) }
+    { 'type' => dir, 'post' => File.basename(file, '.md'), 'title' => meta['title'].to_s, 'date' => sortable_date(meta['date']) }
   end.compact
 end
 
+by_key = posts.to_h { |p| [key_of(p), p] }
 current = File.exist?(ORDER_PATH) ? (YAML.load_file(ORDER_PATH) || {})['posts'] || [] : []
-existing = posts.map { |p| key_of(p) }
 
-kept = current.select { |item| existing.include?(key_of(item)) }.uniq { |item| key_of(item) }
+kept = current.select { |item| by_key.key?(key_of(item)) }.uniq { |item| key_of(item) }
 listed = kept.map { |item| key_of(item) }
 added = posts.reject { |p| listed.include?(key_of(p)) }.sort_by { |p| p['date'] }.reverse
 
-updated = (added + kept).map { |item| { 'type' => item['type'].to_s, 'post' => item['post'].to_s } }
+# Titles are stored so the CMS order page can show them; refresh them in case a post was renamed.
+updated = (added + kept).map do |item|
+  post = by_key[key_of(item)]
+  { 'type' => post['type'], 'post' => post['post'], 'title' => post['title'] }
+end
 
 if updated == current
   puts 'order.yml is already up to date'
