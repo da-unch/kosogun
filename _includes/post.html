@@ -50,7 +50,8 @@
   </div>
 </article>
 
-{%- assign others = posts | where_exp: "p", "p.url != page.url" | reverse -%}
+{%- include feed.html -%}
+{%- assign others = feed | where_exp: "p", "p.url != page.url" -%}
 {%- if others.size > 0 %}
 <h2 class="section-title">More posts</h2>
 <div class="grid" data-masonry>
