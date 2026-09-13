@@ -1,0 +1,32 @@
+name: Sync post order
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-order
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add new posts to the order list and drop deleted ones
+        run: ruby .github/scripts/sync_order.rb
+
+      # Pushes made with GITHUB_TOKEN don't trigger other workflows, so this never loops.
+      # No redeploy is needed either: unlisted posts already render first, newest first.
+      - name: Commit the updated order
+        run: |
+          git diff --quiet -- _data/order.yml && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/order.yml
+          git commit -m "並び順リストに新しい投稿を反映"
+          git push || (git pull --rebase && git push)
