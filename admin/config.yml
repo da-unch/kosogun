@@ -2,6 +2,7 @@ backend:
   name: github
   repo: da-unch/kosogun
   branch: main
+  base_url: https://sveltia-cms-auth.hoda-camel.workers.dev
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
@@ -45,3 +46,33 @@ collections:
       - { label: "画像", name: "images", widget: "list", required: false, field: { label: "画像", name: "image", widget: "image" } }
       - { label: "リンク", name: "links", widget: "list", required: false, field: { label: "URL", name: "url", widget: "string" } }
       - { label: "本文", name: "body", widget: "markdown", required: false }
+
+  - name: "order"
+    label: "並び順"
+    files:
+      - name: "order"
+        label: "タイルの並び順"
+        file: "_data/order.yml"
+        fields:
+          - label: "並び順"
+            name: "posts"
+            widget: "list"
+            required: false
+            hint: "上から順にタイルに並びます。ドラッグで並べ替えて保存。ここに入れていない投稿は、新しい順で先頭に出ます。"
+            summary: "{{fields.post}}"
+            types:
+              - label: "河﨑帆高"
+                name: "河﨑"
+                widget: "object"
+                fields:
+                  - { label: "投稿", name: "post", widget: "relation", collection: "河﨑", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"] }
+              - label: "堀井映理"
+                name: "堀井"
+                widget: "object"
+                fields:
+                  - { label: "投稿", name: "post", widget: "relation", collection: "堀井", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"] }
+              - label: "中野築月"
+                name: "中野"
+                widget: "object"
+                fields:
+                  - { label: "投稿", name: "post", widget: "relation", collection: "中野", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"] }
