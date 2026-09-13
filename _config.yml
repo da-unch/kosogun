@@ -1,16 +1,26 @@
-title: 額縁研究 kosogun
-description: 河﨑帆高・堀井映理・中野築月による額縁の共同リサーチサイト
+title: 構想群 Kōsōgun
+description: 額縁の共同リサーチ
 markdown: kramdown
 
 members:
-  - { key: "河﨑", name: "河﨑帆高", en: "Hodaka Kawasaki" }
-  - { key: "堀井", name: "堀井映理", en: "Eri Horii" }
-  - { key: "中野", name: "中野築月", en: "Kizuki Nakano" }
+  - key: K
+  - key: H
+  - key: N
 
 defaults:
-  - scope: { path: "河﨑" }
+  - scope: { path: "K" }
     values: { layout: default }
-  - scope: { path: "堀井" }
+  - scope: { path: "H" }
     values: { layout: default }
-  - scope: { path: "中野" }
+  - scope: { path: "N" }
     values: { layout: default }
+
+# Internal notes stay in the repository but must not be published on the site.
+exclude:
+  - README.md
+  - CLAUDE.md
+  - AI掲示板.md
+  - 議事録
+  - Gemfile
+  - Gemfile.lock
+  - vendor

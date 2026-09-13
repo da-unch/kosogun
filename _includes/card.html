@@ -1,8 +1,6 @@
 {%- assign c = include.p -%}
 {%- for q in posts -%}{%- if q.url == c.url -%}{%- assign cnum = forloop.index -%}{%- break -%}{%- endif -%}{%- endfor -%}
 {%- assign ckey = c.path | split: "/" | first -%}
-{%- assign cmember = site.members | where: "key", ckey | first -%}
-{%- assign cname = cmember.en | default: cmember.name | default: ckey -%}
 {%- assign ccover = c.images | first -%}
 <a class="card{% unless ccover %} card--text{% endunless %}" href="{{ c.url | relative_url }}">
   <div class="card__media">
@@ -20,7 +18,7 @@
   <div class="card__meta">
     <h3 class="card__title">{{ c.title }}</h3>
     <div class="card__sub">
-      <span class="avatar">{{ cname | slice: 0 }}</span><span>{{ cname }}</span>
+      <span class="avatar">{{ ckey }}</span>
       {%- if c.date %}<span class="dot-sep"></span><time>{{ c.date | date: "%b %-d, %Y" }}</time>{% endif %}
     </div>
   </div>
