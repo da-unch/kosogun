@@ -1,20 +1,20 @@
 ---
 layout: default
-title: 額縁研究
+title: Frame Studies
 ---
 {%- include posts.html -%}
 {%- assign feed = posts | reverse -%}
 <section class="intro">
   <div>
-    <div class="eyebrow">Frame Studies — {{ site.members | map: "name" | join: " / " }}</div>
-    <h1>額縁研究</h1>
+    <p class="eyebrow">Frame Studies</p>
+    <p>A shared scrapbook on frames — photos, notes and links by {{ site.members | map: "en" | join: ", " }}.</p>
   </div>
-  <p>「額縁」をテーマにした3人の共同リサーチ。写真・テキスト・リンクを気軽に貼っていくスクラップボード。<span class="count">{{ posts.size }} posts</span></p>
+  <span class="count">{{ posts.size }} posts</span>
 </section>
 {%- if feed.size > 0 %}
 <div class="grid" data-masonry>
   {%- for item in feed %}{% include card.html p=item %}{% endfor %}
 </div>
 {%- else %}
-<p class="empty">まだ投稿がありません。</p>
+<p class="empty">No posts yet.</p>
 {%- endif %}

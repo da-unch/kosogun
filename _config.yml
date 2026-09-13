@@ -3,9 +3,9 @@ description: 河﨑帆高・堀井映理・中野築月による額縁の共同�
 markdown: kramdown
 
 members:
-  - { key: "河﨑", name: "河﨑帆高" }
-  - { key: "堀井", name: "堀井映理" }
-  - { key: "中野", name: "中野築月" }
+  - { key: "河﨑", name: "河﨑帆高", en: "Hodaka Kawasaki" }
+  - { key: "堀井", name: "堀井映理", en: "Eri Horii" }
+  - { key: "中野", name: "中野築月", en: "Kizuki Nakano" }
 
 defaults:
   - scope: { path: "河﨑" }
