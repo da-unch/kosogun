@@ -1,36 +1,21 @@
 :root {
-  --bg: #f3f3f3;
-  --surface: #ffffff;
-  --surface-2: #e8e8e8;
-  --ink: #0f0f0f;
-  --muted: #707070;
-  --faint: #a8a8a8;
-  --line: rgba(0, 0, 0, .08);
-  --glass: rgba(255, 255, 255, .62);
-  --glass-line: rgba(255, 255, 255, .75);
-  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 16px 48px -16px rgba(0, 0, 0, .2);
+  --bg: #0a0a0a;
+  --surface: #151515;
+  --surface-2: #222222;
+  --ink: #f1f1f1;
+  --muted: #8e8e8e;
+  --faint: #555555;
+  --line: rgba(255, 255, 255, .08);
+  --glass: rgba(24, 24, 24, .55);
+  --glass-line: rgba(255, 255, 255, .09);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 20px 60px -16px rgba(0, 0, 0, .75);
   --radius: 20px;
   --gap: 16px;
   --wide: min(100% - 24px, 1680px);
   --ease: cubic-bezier(.2, .7, .2, 1);
   --font: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
   --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0a0a0a;
-    --surface: #151515;
-    --surface-2: #222222;
-    --ink: #f1f1f1;
-    --muted: #8e8e8e;
-    --faint: #555555;
-    --line: rgba(255, 255, 255, .08);
-    --glass: rgba(24, 24, 24, .55);
-    --glass-line: rgba(255, 255, 255, .09);
-    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 20px 60px -16px rgba(0, 0, 0, .75);
-  }
+  color-scheme: dark;
 }
 
 @view-transition { navigation: auto; }
