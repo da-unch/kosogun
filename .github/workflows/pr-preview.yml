@@ -25,7 +25,21 @@ jobs:
         if: github.event.action != 'closed'
         run: bundle exec jekyll build --baseurl "/kosogun/pr-preview/pr-${{ github.event.number }}"
 
+      # The production deploy workflow also pushes to gh-pages; if both push at once, wait and retry.
       - name: Deploy preview
+        id: preview
+        continue-on-error: true
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./_site
+          preview-branch: gh-pages
+
+      - name: Wait before retrying preview
+        if: steps.preview.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy preview (retry)
+        if: steps.preview.outcome == 'failure'
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: ./_site
