@@ -1,0 +1,18 @@
+{%- include posts.html -%}
+{%- assign ordered = "" | split: "" -%}
+{%- for item in site.data.order.posts -%}
+  {%- assign want = item.type | append: "/" | append: item.post | append: ".md" -%}
+  {%- assign hit = posts | where: "path", want -%}
+  {%- assign ordered = ordered | concat: hit -%}
+{%- endfor -%}
+{%- assign ordered = ordered | uniq -%}
+{%- assign listed = ordered | map: "path" -%}
+{%- comment -%}Posts missing from _data/order.yml (e.g. newly published) go first, newest first.{%- endcomment -%}
+{%- assign feed = "" | split: "" -%}
+{%- for p in posts reversed -%}
+  {%- unless listed contains p.path -%}
+    {%- assign single = posts | where: "path", p.path -%}
+    {%- assign feed = feed | concat: single -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- assign feed = feed | concat: ordered -%}
