@@ -1,0 +1,28 @@
+{%- assign c = include.p -%}
+{%- for q in posts -%}{%- if q.url == c.url -%}{%- assign cnum = forloop.index -%}{%- break -%}{%- endif -%}{%- endfor -%}
+{%- assign ckey = c.path | split: "/" | first -%}
+{%- assign cmember = site.members | where: "key", ckey | first -%}
+{%- assign cname = cmember.en | default: cmember.name | default: ckey -%}
+{%- assign ccover = c.images | first -%}
+<a class="card{% unless ccover %} card--text{% endunless %}" href="{{ c.url | relative_url }}">
+  <div class="card__media">
+    {%- if ccover %}
+    <img src="{{ ccover | relative_url }}" alt="{{ c.title | escape }}" decoding="async" style="view-transition-name: pin-{{ cnum }}">
+    {%- else %}
+    <p class="card__excerpt">{{ c.content | markdownify | strip_html | strip | truncate: 140 }}</p>
+    {%- endif %}
+    <div class="chips chips--left"><span class="chip">No.{{ cnum | prepend: "00" | slice: -3, 3 }}</span></div>
+    <div class="chips chips--right">
+      {%- if c.images.size > 1 %}<span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="7" width="14" height="14" rx="2"/><path d="M3 17V5a2 2 0 0 1 2-2h12"/></svg>{{ c.images.size }}</span>{% endif %}
+      {%- if c.links.size > 0 %}<span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>{{ c.links.size }}</span>{% endif %}
+    </div>
+    <span class="card__open">Open</span>
+  </div>
+  <div class="card__meta">
+    <h3 class="card__title">{{ c.title }}</h3>
+    <div class="card__sub">
+      <span class="avatar">{{ cname | slice: 0 }}</span><span>{{ cname }}</span>
+      {%- if c.date %}<span class="dot-sep"></span><time>{{ c.date | date: "%b %-d, %Y" }}</time>{% endif %}
+    </div>
+  </div>
+</a>
