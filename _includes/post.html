@@ -25,7 +25,6 @@
   {%- endif %}
   <div class="pin__body">
     <div class="pin__top">
-      <span class="num">No.{{ num | prepend: "00" | slice: -3, 3 }}</span>
       {%- if page.date %}<time class="num" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>{% endif %}
     </div>
     <h1>{{ page.title }}</h1>
