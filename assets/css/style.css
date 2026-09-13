@@ -68,9 +68,8 @@ button { font: inherit; color: inherit; }
   box-shadow: var(--shadow);
 }
 .page-post .topbar { padding-left: 8px; }
-.brand { display: flex; flex-direction: column; justify-content: center; line-height: 1.02; font-weight: 300; white-space: nowrap; }
-.brand__ja { font-size: 12px; letter-spacing: .04em; }
-.brand__en { font-family: "Helvetica Neue", "Inter", sans-serif; font-size: 15px; letter-spacing: 0; }
+.brand { display: flex; align-items: center; flex: none; }
+.brand img { width: auto; height: 32px; }
 .topbar__spacer { flex: 1; }
 .pill, .icon-btn {
   display: inline-flex;
